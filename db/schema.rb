@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_27_160116) do
+ActiveRecord::Schema.define(version: 2018_11_27_173412) do
+
+  create_table "images", force: :cascade do |t|
+    t.string "file_name", null: false
+    t.string "title"
+    t.string "season"
+    t.string "episode"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
