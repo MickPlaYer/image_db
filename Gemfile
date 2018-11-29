@@ -37,9 +37,11 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
+gem 'activerecord-import'
 gem 'awesome_print'
 gem 'pry-rails'
 gem 'rest-client'
+gem 'mini_magick'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
