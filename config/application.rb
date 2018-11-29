@@ -8,7 +8,7 @@ Bundler.require(*Rails.groups)
 
 module ImageDb
   def self.images_path
-    Rails.root.join 'images'
+    @images_path ||= Rails.root.join 'public', 'images'
   end
 
   class Application < Rails::Application
