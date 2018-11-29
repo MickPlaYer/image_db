@@ -3,27 +3,34 @@
 class QueryImageJob < ApplicationJob
   queue_as :default
 
-  def perform(*args)
-    args.present?
-    random = Random.new(0)
-    file_path = Dir.glob(ImageDb.images_path.join('*')).sample(random: random)
-    base64 = Base64.encode64(File.open(file_path, 'rb').read)
-    mime_type = MIME::Types.type_for(file_path).first.content_type
-    image_data = "data:#{mime_type};base64,#{base64}"
+  def perform(file_name)
+    @image = Image.find_by!(file_name: file_name)
+    @image_data = base64_data(@image.file_name)
     site = RestClient::Resource.new('https://trace.moe/api')
-    search_result = JSON.parse(site['search'].post(image: image_data))
+    search_result = JSON.parse(site['search'].post(image: @image_data))
     Rails.logger.ap search_result
-    return if search_result['docs'].blank?
-
-    create_image(search_result['docs'], file_path)
+    data = { queried: true }
+    docs = search_result['docs']
+    data.merge!(docs.first.slice('title', 'season', 'episode')) if docs.present?
+    @image.update!(data)
   end
 
   private
 
-  def create_image(docs, file_path)
-    doc = docs.min_by { |d| [d['anilist_id'], d['episode']] }
-    file_name = File.basename(file_path)
-    image = Image.find_or_create_by(file_name: file_name)
-    image.update!(doc.slice('title', 'season', 'episode'))
+  def base64_data(file_name)
+    file_path = ImageDb.images_path.join(file_name).to_s
+    thumb_path = thumb_image(file_path)
+    base64 = Base64.encode64(File.open(thumb_path, 'rb').read)
+    mime_type = MIME::Types.type_for(thumb_path).first.content_type
+    "data:#{mime_type};base64,#{base64}"
+  end
+
+  def thumb_image(file_path)
+    basename = File.basename(file_path, '.*')
+    magick = MiniMagick::Image.open(file_path)
+    magick.resize '640x640' if magick.dimensions.any? { |d| d > 640 }
+    magick.format 'jpg'
+    magick.write(Rails.root.join('public', 'thumbs', "#{basename}.jpg"))
+    magick.path
   end
 end
