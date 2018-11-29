@@ -11,7 +11,6 @@ class ClearImagesJob < ApplicationJob
 
       image_ids.push(image.id)
     end
-
     return if image_ids.blank?
 
     image_ids.each_slice(100) do |ids|
