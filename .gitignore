@@ -25,4 +25,6 @@
 /config/master.key
 
 # Others
-spec/examples.txt
+/spec/examples.txt
+/public/images
+/public/thumbs
