@@ -1,5 +1,7 @@
 inherit_from: .rubocop_todo.yml
 
+require: rubocop-rspec
+
 AllCops:
   Exclude:
     - 'db/schema.rb'
@@ -9,6 +11,10 @@ Rails:
 
 Metrics/AbcSize:
   Max: 25
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/**/*_spec.rb'
 
 Metrics/MethodLength:
   Max: 20

@@ -95,6 +95,11 @@ GEM
     erubi (1.7.1)
     erubis (2.7.0)
     execjs (2.7.0)
+    factory_bot (4.11.1)
+      activesupport (>= 3.0.0)
+    factory_bot_rails (4.11.1)
+      factory_bot (~> 4.11.1)
+      railties (>= 3.0.0)
     ffi (1.9.25-x64-mingw32)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
@@ -157,6 +162,10 @@ GEM
       rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
+    rails-controller-testing (1.0.3)
+      actionpack (>= 5.0.1.x)
+      actionview (>= 5.0.1.x)
+      activesupport (>= 5.0.1.x)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
@@ -202,6 +211,8 @@ GEM
       rainbow (>= 2.2.2, < 4.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (~> 1.4.0)
+    rubocop-rspec (1.30.1)
+      rubocop (>= 0.60.0)
     ruby-progressbar (1.10.0)
     sass (3.7.2)
       sass-listen (~> 4.0.0)
@@ -269,6 +280,7 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.2)
   duktape
+  factory_bot_rails
   httparty
   jbuilder (~> 2.5)
   kaminari
@@ -276,9 +288,11 @@ DEPENDENCIES
   pry-rails
   puma (~> 3.11)
   rails!
+  rails-controller-testing
   rails_best_practices
   rspec-rails
   rubocop
+  rubocop-rspec
   sass-rails (~> 5.0)
   sidekiq
   silencer

@@ -53,10 +53,16 @@ group :development, :test do
   gem 'rails_best_practices'
   gem 'rspec-rails'
   gem 'rubocop'
+  gem 'rubocop-rspec'
 end
 
 group :development do
   gem 'web-console', '>= 3.3.0'
+end
+
+group :test do
+  gem 'factory_bot_rails'
+  gem 'rails-controller-testing'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
