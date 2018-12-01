@@ -6,8 +6,9 @@ module ImagesHelper
     magick = MiniMagick::Image.open(file_path)
     magick.resize '640x640' if magick.dimensions.any? { |d| d > 640 }
     magick.format 'jpg'
-    magick.write(Rails.root.join('public', 'thumbs', "#{image.basename}.jpg"))
-    magick.path
+    thumb_path = ImageDb.thumbs_path.join("#{image.basename}.jpg")
+    magick.write(thumb_path)
+    thumb_path
   end
 
   def thumb_path(image)

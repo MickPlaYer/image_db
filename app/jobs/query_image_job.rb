@@ -20,7 +20,7 @@ class QueryImageJob < ApplicationJob
   private
 
   def thumb_image(image)
-    thumb_path = Rails.root.join('public', 'thumbs', "#{image.basename}.jpg")
+    thumb_path = ImageDb.thumbs_path.join("#{image.basename}.jpg")
     if File.exist?(thumb_path)
       thumb_path.to_s
     else
