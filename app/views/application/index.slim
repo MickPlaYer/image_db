@@ -1,0 +1,27 @@
+- # frozen_string_literal: true
+
+h2 Images
+.images.px-2
+  .row
+    = render partial: 'images/image', collection: @images
+= link_to images_path,
+          class: 'btn btn-primary btn-lg btn-block',
+          role: 'button',
+          'aria-disabled' => 'true'
+  | Show All
+hr
+h2 Title: #{@title}
+.images.px-2
+  .row
+    = render partial: 'images/image', collection: @images_by_title
+= link_to images_path(title: @title),
+          class: 'btn btn-primary btn-lg btn-block',
+          role: 'button',
+          'aria-disabled' => 'true'
+  | Show All #{@title}
+hr
+h2 Titles
+.titles
+  - @titles.sample(100).each do |title|
+    = link_to images_path(title: title), class: 'badge badge-info'
+      = title

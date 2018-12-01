@@ -1,0 +1,12 @@
+- # frozen_string_literal: true
+
+.px-2.w-20
+  .card.mb-3
+    .card-img-top.embed-responsive.embed-responsive-16by9.bg-dark
+      img.image(src=thumb_path(image)
+                alt=image.file_name)
+      - if image.queried?
+        - if image.title.present?
+          span.badge.badge-info = image.title
+        - else
+          span.badge.badge-danger ???

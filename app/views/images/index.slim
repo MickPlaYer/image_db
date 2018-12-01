@@ -1,0 +1,8 @@
+- # frozen_string_literal: true
+
+h2 Images
+.images.px-2
+  .row
+    = render partial: 'images/image', collection: @images
+.images-paginate
+  = paginate @images, theme: 'twitter-bootstrap-4'

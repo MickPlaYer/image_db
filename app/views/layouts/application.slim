@@ -1,0 +1,23 @@
+- # frozen_string_literal: true
+
+doctype html
+html
+  head
+    title ImageDb
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application', media: 'all'
+    = javascript_include_tag 'application'
+  body
+    header.bg-dark
+      .container-fluid
+        = link_to root_path, class: 'text-light'
+          h1 ImageDb
+    .flex-fill
+      .container-fluid = yield
+    footer.bg-secondary.mt-3
+      .text-center.text-light.py-2
+        | © 2018 Copyright:
+        '
+        a.text-light href="https://github.com/MickPlaYer"
+          | MickPlaYer

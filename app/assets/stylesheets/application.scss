@@ -1,1 +1,9 @@
+$sizes: (10: 10%, 20: 20%, 40: 40%);
 @import 'bootstrap/scss/bootstrap';
+@import 'images';
+
+body {
+  @extend .d-flex;
+  @extend .flex-column;
+  min-height: 100vh;
+}
