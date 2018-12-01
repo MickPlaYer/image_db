@@ -39,6 +39,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'activerecord-import'
 gem 'awesome_print'
+gem 'bootstrap4-kaminari-views'
 gem 'httparty'
 gem 'kaminari'
 gem 'mini_magick'
