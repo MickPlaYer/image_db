@@ -28,3 +28,5 @@
 /spec/examples.txt
 /public/images
 /public/thumbs
+!/public/thumbs/.keep
+!/tmp/thumbs/.keep
