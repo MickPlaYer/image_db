@@ -39,9 +39,9 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'activerecord-import'
 gem 'awesome_print'
+gem 'httparty'
 gem 'mini_magick'
 gem 'pry-rails'
-gem 'rest-client'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
