@@ -7,9 +7,10 @@ class QueryImageJob < ApplicationJob
     image = Image.find_by!(file_name: file_name)
     thumb_path = thumb_image(image)
     image_data = helpers.base64_data(thumb_path)
-    site = RestClient::Resource.new('https://trace.moe/api')
-    search_result = JSON.parse(site['search'].post(image: image_data))
-    Rails.logger.ap search_result
+    site = WhatAnime.new
+    response = site.search(image_data)
+    search_result = JSON.parse(response)
+    logger.ap search_result
     data = { queried: true }
     docs = search_result['docs']
     data.merge!(docs.first.slice('title', 'season', 'episode')) if docs.present?
