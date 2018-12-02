@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-  def index
+  def homepage
     @images = Image.queried.order(:updated_at).last(10)
     @titles = Image.where.not(title: nil).distinct(:title).pluck(:title)
     @title = @titles.sample

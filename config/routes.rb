@@ -3,7 +3,7 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
-  root 'application#index'
+  root 'application#homepage'
   resources :images, only: :index
   mount Sidekiq::Web => '/sidekiq'
 end

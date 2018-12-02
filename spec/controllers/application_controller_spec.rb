@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe ApplicationController do
-  describe '#index' do
+  describe '#homepage' do
     let!(:images) do
       [
         create(:image, :bakemonogatari),
@@ -11,7 +11,7 @@ RSpec.describe ApplicationController do
       ]
     end
 
-    before { get :index }
+    before { get :homepage }
 
     it { expect(response).to have_http_status(:ok) }
 
