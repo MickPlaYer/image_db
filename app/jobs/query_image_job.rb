@@ -9,7 +9,7 @@ class QueryImageJob < ApplicationJob
     image_data = helpers.base64_data(thumb_path)
     site = WhatAnime.new
     response = site.search(image_data)
-    search_result = JSON.parse(response)
+    search_result = JSON.parse(response.body)
     logger.ap search_result
     data = { queried: true }
     docs = search_result['docs']
