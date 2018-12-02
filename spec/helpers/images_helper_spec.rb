@@ -12,7 +12,6 @@ RSpec.describe ImagesHelper, type: :helper do
 
     it 'convert image to thumb version' do
       thumb_path = helper.thumb_image(image)
-      `open #{thumb_path}`
       expect(File).to exist thumb_path
     end
   end
