@@ -7,6 +7,7 @@
                 alt=image.file_name)
       - if image.queried?
         - if image.title.present?
-          span.badge.badge-info = image.title
+          = link_to images_path(title:image.title), class: 'badge badge-info'
+            - image.title
         - else
           span.badge.badge-danger ???
