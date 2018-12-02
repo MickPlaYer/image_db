@@ -1,2 +1,2 @@
-web: bundle exec rails server
-worker: bundle exec sidekiq -e development
+rails: bundle exec rails server
+sidekiq: bundle exec sidekiq -e development
