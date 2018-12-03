@@ -27,4 +27,18 @@ RSpec.describe ImagesController, type: :controller do
       end
     end
   end
+
+  describe '#clear' do
+    let(:image) { create(:image, :bakemonogatari) }
+
+    before { put :clear, params: { id: image.id } }
+
+    it { expect(response).to redirect_to(:show_image) }
+    it 'clear image data' do
+      image.reload
+      expect(image).to have_attributes(title: nil,
+                                       season: nil,
+                                       episode: nil)
+    end
+  end
 end
