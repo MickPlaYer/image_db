@@ -18,7 +18,8 @@ RSpec.describe ImagesHelper, type: :helper do
 
   describe '#thumb_path' do
     it 'return images\'s public thumb path' do
-      expect(helper.thumb_path(image)).to eq "/thumbs/#{image.basename}.jpg"
+      thumb_path = helper.public_thumb_path(image)
+      expect(thumb_path).to eq "/thumbs/#{image.basename}.jpg"
     end
   end
 end

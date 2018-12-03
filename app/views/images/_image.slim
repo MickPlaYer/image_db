@@ -4,7 +4,7 @@
   .card.mb-3
     .card-img-top.embed-responsive.embed-responsive-16by9.bg-dark
       = link_to show_image_path(image)
-        img.image(src=thumb_path(image)
+        img.image(src=public_thumb_path(image)
                   alt=image.file_name)
       - if image.queried?
         - if image.title.present?
