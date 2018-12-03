@@ -7,3 +7,7 @@ body {
   @extend .flex-column;
   min-height: 100vh;
 }
+
+a[href]:empty::before {
+  content: attr(href);
+}

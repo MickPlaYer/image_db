@@ -4,6 +4,11 @@ require 'sidekiq/web'
 
 Rails.application.routes.draw do
   root 'application#homepage'
-  resources :images, only: :index
+  resources :images, only: :index do
+    member do
+      get :show, path: '', as: :show
+      put :clear
+    end
+  end
   mount Sidekiq::Web => '/sidekiq'
 end

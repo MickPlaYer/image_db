@@ -1,0 +1,44 @@
+- # frozen_string_literal: true
+
+h2 Image
+
+.row
+  .col-md-6
+    img.img-thumbnail(src=public_image_path(@image)
+                      alt=@image.file_name)
+  .col-md-6
+    p = @image.file_name
+    p
+      = @image.season
+      '
+      = @image.title
+      '
+      = @image.episode
+    p
+      .input-group
+        .input-group-prepend
+          .input-group-text File Path
+        input#file-path-input.form-control(
+          readonly
+          value="file://#{ImageDb.images_path.join(@image.file_name)}"
+        )
+        .input-group-append
+          button#file-path-copy.btn.btn-primary(type="button") Copy
+    .image-controls
+      button.btn.btn-secondary(type="button") Retry
+      = button_to 'Clear',
+                  clear_image_path,
+                  method: :put,
+                  class: 'btn btn-warning',
+                  form: { class: 'd-inline-flex' },
+                  data: { confirm: 'Really?' }
+      button#ignore-button.btn.btn-danger(type="button") Ignore
+javascript:
+  {
+    const button = window['file-path-copy']
+    const input = window['file-path-input']
+    button.addEventListener('click', event => {
+      input.select()
+      document.execCommand('copy')
+    })
+  }

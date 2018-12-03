@@ -1,12 +1,14 @@
 .images {
-  img.image {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    margin: auto;
+  a {
+    img.image {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      margin: auto;
+    }
 
     + .badge {
       position: absolute;
@@ -35,6 +37,16 @@
   margin-right: -$size;
   margin-bottom: -$size;
   .badge {
+    margin-right: $size;
+    margin-bottom: $size;
+  }
+}
+
+.image-controls {
+  $size: $spacer * .25;
+  margin-right: -$size;
+  margin-bottom: -$size;
+  > form, > button.btn {
     margin-right: $size;
     margin-bottom: $size;
   }
