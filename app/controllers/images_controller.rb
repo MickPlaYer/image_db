@@ -19,6 +19,11 @@ class ImagesController < ApplicationController
     redirect_to :show_image
   end
 
+  def query_all
+    Images::QueryAllJob.perform_later
+    head :ok
+  end
+
   private
 
   def image_by_id
@@ -26,6 +31,8 @@ class ImagesController < ApplicationController
   end
 
   def must_be_queried
+    return if @image.queried?
+
     redirect_to :show_image, flash: { error: t('.must_be_queried') }
   end
 end

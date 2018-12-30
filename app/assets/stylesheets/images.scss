@@ -41,13 +41,3 @@
     margin-bottom: $size;
   }
 }
-
-.image-controls {
-  $size: $spacer * .25;
-  margin-right: -$size;
-  margin-bottom: -$size;
-  > form, > button.btn {
-    margin-right: $size;
-    margin-bottom: $size;
-  }
-}

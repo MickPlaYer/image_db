@@ -35,10 +35,13 @@ end
 
 RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
+  config.include ActiveJob::TestHelper
   config.use_transactional_fixtures = true
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
 end
+
+ActiveJob::Base.queue_adapter = :test
 
 ImageDb.images_path = Rails.root.join('spec', 'files', 'images')
 ImageDb.thumbs_path = Rails.root.join('tmp', 'thumbs')

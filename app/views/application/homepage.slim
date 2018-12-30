@@ -25,3 +25,14 @@ h2 Titles
   - @titles.sample(100).each do |title|
     = link_to images_path(title: title), class: 'badge badge-info'
       = title
+hr
+h2 Jobs
+.buttons-controls
+  = link_to t('.sidekiq'), sidekiq_path, class: 'btn btn-danger', target: '_blank'
+  = button_to t('.query_all'),
+              query_all_images_path,
+              remote: true,
+              method: :post,
+              class: 'btn btn-warning',
+              form: { class: 'd-inline-flex' },
+              data: { confirm: 'Really?' }

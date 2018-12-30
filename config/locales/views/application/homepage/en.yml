@@ -1,0 +1,5 @@
+en:
+  application:
+    homepage:
+      sidekiq: Sidekiq
+      query_all: Query All
