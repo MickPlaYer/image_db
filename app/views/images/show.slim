@@ -1,44 +1,59 @@
 - # frozen_string_literal: true
 
-h2 Image
+h2 = Image.model_name.human
 
 .row
   .col-md-6
-    img.img-thumbnail(src=public_image_path(@image)
-                      alt=@image.file_name)
+    img.img-thumbnail.w-100(
+      src=public_image_path(@image)
+      alt=@image.file_name
+    )
   .col-md-6
-    p = @image.file_name
-    p
-      = @image.season
-      '
-      = @image.title
-      '
-      = @image.episode
-    p
-      .input-group
-        .input-group-prepend
-          .input-group-text File Path
-        input#file-path-input.form-control(
-          readonly
-          value="file://#{ImageDb.images_path.join(@image.file_name)}"
-        )
-        .input-group-append
-          button#file-path-copy.btn.btn-primary(type="button") Copy
-    .image-controls
-      button.btn.btn-secondary(type="button") Retry
-      = button_to 'Clear',
-                  clear_image_path,
-                  method: :put,
-                  class: 'btn btn-warning',
-                  form: { class: 'd-inline-flex' },
-                  data: { confirm: 'Really?' }
-      button#ignore-button.btn.btn-danger(type="button") Ignore
+    .mb-3 = @image.file_name
+    .mb-3
+      - if @image.queried?
+        = @image.season
+        = link_to images_path(title: @image.title),
+                  class: 'badge badge-info mx-1'
+          - @image.title
+        = @image.episode
+    .input-group.mb-3
+      .input-group-prepend
+        .input-group-text = t('.file_path')
+      input#file-path-input.form-control(
+        readonly
+        value="file://#{ImageDb.images_path.join(@image.file_name)}"
+      )
+      .input-group-append
+        button#file-path-copy.btn.btn-primary(type="button") = t('.copy')
+    .input-group.mb-3
+      .input-group-prepend
+        .input-group-text = t('.image_link')
+      input#public-path-input.form-control(
+        readonly
+        value=public_image_url(@image)
+      )
+      .input-group-append
+        button#public-path-copy.btn.btn-primary(type="button") = t('.copy')
+    - if @image.queried?
+      .image-controls
+        button.btn.btn-secondary(type="button") = t('.retry')
+        = button_to t('.clear'),
+                    clear_image_path,
+                    method: :put,
+                    class: 'btn btn-warning',
+                    form: { class: 'd-inline-flex' },
+                    data: { confirm: 'Really?' }
+        button#ignore-button.btn.btn-danger(type="button") = t('.ignore')
+
 javascript:
   {
-    const button = window['file-path-copy']
-    const input = window['file-path-input']
-    button.addEventListener('click', event => {
-      input.select()
-      document.execCommand('copy')
+    ['file-path', 'public-path'].forEach(name => {
+      const button = window[`${name}-copy`]
+      const input = window[`${name}-input`]
+      button.addEventListener('click', event => {
+        input.select()
+        document.execCommand('copy')
+      })
     })
   }

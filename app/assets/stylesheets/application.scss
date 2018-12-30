@@ -11,3 +11,8 @@ body {
 a[href]:empty::before {
   content: attr(href);
 }
+
+.translation_missing {
+  color: red;
+  background: yellow;
+}

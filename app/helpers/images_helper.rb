@@ -18,4 +18,12 @@ module ImagesHelper
   def public_image_path(image)
     "#{root_path}images/#{image.file_name}"
   end
+
+  def public_thumb_url(image)
+    "#{root_url}thumbs/#{image.basename}.jpg"
+  end
+
+  def public_image_url(image)
+    "#{root_url}images/#{image.file_name}"
+  end
 end

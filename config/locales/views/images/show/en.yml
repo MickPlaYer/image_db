@@ -1,0 +1,9 @@
+en:
+  images:
+    show:
+      file_path: File Path
+      image_link: Image Link
+      copy: Copy
+      retry: Retry
+      clear: Clear
+      ignore: Ignore
