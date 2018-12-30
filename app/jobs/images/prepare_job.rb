@@ -22,7 +22,7 @@ module Images
         image_file_names = Image.where(file_name: file_names).pluck(:file_name)
         images = (file_names - image_file_names).map do |file_name|
           image = Image.new(file_name: file_name)
-          thumb_image(image) if thumb?
+          helpers.thumb_image(image) if thumb?
           image
         end
         Image.import images
