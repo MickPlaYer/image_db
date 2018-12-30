@@ -1,6 +1,7 @@
 en:
   images:
     show:
+      title: Image
       file_path: File Path
       image_link: Image Link
       copy: Copy
