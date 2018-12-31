@@ -4,7 +4,11 @@ require 'rails_helper'
 
 RSpec.describe Images::JobsController, type: :controller do
   describe '#create' do
-    let(:do_request) { proc { |type| post :create, params: { type: type } } }
+    let(:do_request) do
+      proc do |type, options|
+        post :create, params: { type: type, options: options }
+      end
+    end
 
     after { clear_enqueued_jobs }
 
@@ -41,6 +45,16 @@ RSpec.describe Images::JobsController, type: :controller do
       before { do_request.call('not_allow') }
 
       it { expect(response).to have_http_status :method_not_allowed }
+    end
+
+    context 'when options: ["foo", "bar"]' do
+      subject do
+        -> { do_request.call(described_class::TYPES_MAP.keys.first, options) }
+      end
+
+      let(:options) { %w[foo bar] }
+
+      it { is_expected.to have_enqueued_job.with(*options) }
     end
   end
 end

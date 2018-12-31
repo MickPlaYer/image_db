@@ -35,8 +35,8 @@ h2 = t('.title')
       )
       .input-group-append
         button#public-path-copy.btn.btn-primary(type="button") = t('.copy')
-    - if @image.queried?
-      .buttons-controls
+    .buttons-controls
+      - if @image.queried?
         button.btn.btn-secondary(type="button") = t('.retry')
         = button_to t('.clear'),
                     clear_image_path,
@@ -45,6 +45,8 @@ h2 = t('.title')
                     form: { class: 'd-inline-flex' },
                     data: { confirm: 'Really?' }
         button#ignore-button.btn.btn-danger(type="button") = t('.ignore')
+      - else
+        = create_job_button('query', @image.file_name)
 
 javascript:
   {

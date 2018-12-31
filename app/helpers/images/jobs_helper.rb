@@ -2,9 +2,10 @@
 
 module Images
   module JobsHelper
-    def create_job_button(type)
+    def create_job_button(type, *options)
       button_to t(".#{type}"),
-                images_jobs_path(type: type),
+                images_jobs_path,
+                params: { type: type, options: options },
                 remote: true,
                 method: :post,
                 class: 'btn btn-warning',

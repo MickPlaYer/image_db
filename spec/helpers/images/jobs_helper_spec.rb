@@ -6,10 +6,11 @@ RSpec.describe Images::JobsHelper, type: :helper do
   describe '#create_job_button' do
     let(:type) { 'my_type' }
     let(:expected_button) do
-      '<form class="d-inline-flex" method="post"' \
-      " action=\"/images/jobs?type=#{type}\" data-remote=\"true\">" \
+      '<form class="d-inline-flex" method="post" action="/images/jobs"' \
+      ' data-remote="true">' \
       '<input class="btn btn-warning" data-confirm="Really?"' \
-      " type=\"submit\" value=\"#{type}\" /></form>"
+      " type=\"submit\" value=\"#{type}\" />" \
+      "<input type=\"hidden\" name=\"type\" value=\"#{type}\" /></form>"
     end
 
     it 'render a button to create a job' do
