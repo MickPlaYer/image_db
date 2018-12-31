@@ -5,6 +5,7 @@ module Images
     TYPES_MAP = {
       'query_all' => 'Images::QueryAllJob',
       'prepare' => 'Images::PrepareJob',
+      'thumb' => 'Images::ThumbJob',
       'clear' => 'Images::ClearJob'
     }.freeze
 

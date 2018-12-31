@@ -4,4 +4,5 @@ en:
       sidekiq: Sidekiq
       query_all: Query All
       prepare: Prepare
+      thumb: Thumb
       clear: Clear

@@ -25,7 +25,7 @@ module Images
           helpers.thumb_image(image) if thumb?
           image
         end
-        Image.import images
+        Image.import [:file_name], images
       end
     end
 

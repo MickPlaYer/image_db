@@ -7,7 +7,7 @@ class ImagesController < ApplicationController
   def index
     conditions = params.permit(:title)
     @images = Image.where(conditions)
-                   .order(:file_name)
+                   .order(:id)
                    .page(params[:page])
                    .per(200)
   end
