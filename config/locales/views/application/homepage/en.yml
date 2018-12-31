@@ -3,3 +3,5 @@ en:
     homepage:
       sidekiq: Sidekiq
       query_all: Query All
+      prepare: Prepare
+      clear: Clear

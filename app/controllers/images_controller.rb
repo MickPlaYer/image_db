@@ -19,11 +19,6 @@ class ImagesController < ApplicationController
     redirect_to :show_image
   end
 
-  def query_all
-    Images::QueryAllJob.perform_later
-    head :ok
-  end
-
   private
 
   def image_by_id

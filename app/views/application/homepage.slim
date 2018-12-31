@@ -29,10 +29,6 @@ hr
 h2 Jobs
 .buttons-controls
   = link_to t('.sidekiq'), sidekiq_path, class: 'btn btn-danger', target: '_blank'
-  = button_to t('.query_all'),
-              query_all_images_path,
-              remote: true,
-              method: :post,
-              class: 'btn btn-warning',
-              form: { class: 'd-inline-flex' },
-              data: { confirm: 'Really?' }
+  = create_job_button('query_all')
+  = create_job_button('prepare')
+  = create_job_button('clear')

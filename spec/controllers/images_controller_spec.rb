@@ -41,17 +41,4 @@ RSpec.describe ImagesController, type: :controller do
                                        episode: nil)
     end
   end
-
-  describe '#query_all' do
-    after { clear_enqueued_jobs }
-
-    it { expect { post :query_all }.to have_enqueued_job }
-
-    describe 'result' do
-      before { post :query_all }
-
-      it { expect(Images::QueryAllJob).to have_been_enqueued }
-      it { expect(response).to have_http_status :ok }
-    end
-  end
 end

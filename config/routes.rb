@@ -4,10 +4,10 @@ require 'sidekiq/web'
 
 Rails.application.routes.draw do
   root 'application#homepage'
+  namespace :images do
+    resources :jobs, only: :create
+  end
   resources :images, only: :index do
-    collection do
-      post :query_all
-    end
     member do
       get :show, path: '', as: :show
       put :clear
