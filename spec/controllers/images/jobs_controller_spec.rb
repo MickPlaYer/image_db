@@ -12,7 +12,7 @@ RSpec.describe Images::JobsController, type: :controller do
       it { expect { do_request.call }.not_to have_enqueued_job }
     end
 
-    context 'when type: nil and result' do
+    context 'when type: nil then result' do
       before { do_request.call }
 
       it { expect(response).to have_http_status :method_not_allowed }
@@ -23,7 +23,7 @@ RSpec.describe Images::JobsController, type: :controller do
         it { expect { do_request.call(type) }.to have_enqueued_job }
       end
 
-      context "when type: #{type.inspect} and result" do
+      context "when type: #{type.inspect} then result" do
         before { do_request.call(type) }
 
         it "#{job} be enqueued" do
@@ -37,7 +37,7 @@ RSpec.describe Images::JobsController, type: :controller do
       it { expect { do_request.call('not_allow') }.not_to have_enqueued_job }
     end
 
-    context 'when type: "not_allow" and result' do
+    context 'when type: "not_allow" then result' do
       before { do_request.call('not_allow') }
 
       it { expect(response).to have_http_status :method_not_allowed }
