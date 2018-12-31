@@ -9,6 +9,10 @@ body {
   min-height: 100vh;
 }
 
+header {
+  @extend .sticky-top;
+}
+
 a[href]:empty::before {
   content: attr(href);
 }
