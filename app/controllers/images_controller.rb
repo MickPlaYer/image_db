@@ -5,7 +5,8 @@ class ImagesController < ApplicationController
   before_action :must_be_queried, only: %i[clear]
 
   def index
-    conditions = params.permit(:title)
+    permited_params = params.permit(:title, :page)
+    conditions = permited_params.slice(:title)
     @images = Image.where(conditions)
                    .order(:id)
                    .page(params[:page])

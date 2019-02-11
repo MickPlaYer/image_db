@@ -3,11 +3,15 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  concern :paginatable do
+    get '(page/:page)', action: :index, on: :collection, as: ''
+  end
+
   root 'application#homepage'
   namespace :images do
     resources :jobs, only: :create
   end
-  resources :images, only: :index do
+  resources :images, only: :index, concerns: :paginatable do
     member do
       get :show, path: '', as: :show
       put :clear
