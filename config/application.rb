@@ -26,6 +26,7 @@ module ImageDb
   class Application < Rails::Application
     config.load_defaults 5.2
     config.active_job.queue_adapter = :sidekiq
+    config.generators.javascript_engine = :js
     locale_files = Rails.root.join('config', 'locales', '**', '*.{rb,yml}')
     config.i18n.load_path += Dir.glob(locale_files)
   end
