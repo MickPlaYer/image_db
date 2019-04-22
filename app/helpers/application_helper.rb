@@ -2,8 +2,11 @@
 
 module ApplicationHelper
   def base64_data(path)
-    base64 = Base64.encode64(File.open(path, 'rb').read)
-    mime_type = MIME::Types.type_for(path).first.content_type
+    file = File.open(path, 'rb')
+    base64 = Base64.encode64(file.read)
+    mime_type = MIME::Types.type_for(path.to_s).first.content_type
     "data:#{mime_type};base64,#{base64}"
+  ensure
+    file.close if file
   end
 end
