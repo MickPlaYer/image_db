@@ -12,6 +12,9 @@ Rails.application.routes.draw do
     resources :jobs, only: :create
   end
   resources :images, only: :index, concerns: :paginatable do
+    collection do
+      post :search
+    end
     member do
       get :show, path: '', as: :show
       put :clear

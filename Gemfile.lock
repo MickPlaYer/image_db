@@ -182,6 +182,11 @@ GEM
       ruby-progressbar
     rainbow (3.0.0)
     rake (12.3.2)
+    ransack (2.1.1)
+      actionpack (>= 5.0)
+      activerecord (>= 5.0)
+      activesupport (>= 5.0)
+      i18n
     redis (4.1.0)
     require_all (2.0.0)
     rspec-core (3.8.0)
@@ -285,6 +290,7 @@ DEPENDENCIES
   rails!
   rails-controller-testing
   rails_best_practices
+  ransack
   rspec-rails
   rubocop
   rubocop-rspec

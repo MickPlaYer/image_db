@@ -14,6 +14,16 @@ html
       .container-fluid
         = link_to root_path, class: 'text-light'
           h1 ImageDb
+      .search
+        = form_tag search_images_path, class: 'form-inline flex-nowrap'
+          input.form-control.mr-2(
+            name="search"
+            type="search"
+            value=params[:search]
+            placeholder="Search"
+            aria-label="Search"
+          )
+          button.btn.btn-outline-primary(type="submit") Search
     .flex-fill
       .container-fluid = yield
     footer.bg-secondary.mt-3

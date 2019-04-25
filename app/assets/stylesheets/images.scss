@@ -38,10 +38,23 @@
 .images-paginate {
   display: inline-block;
   position: sticky;
-  bottom: 0;
+  bottom: $spacer;
   > nav {
     display: inline-block;
     > ul {
+      @extend .mb-0;
+      @extend .shadow;
+    }
+  }
+}
+
+.search {
+  @extend .fixed-top;
+  top: $spacer * .5;
+  right: $spacer;
+  left: auto;
+  > form {
+    button, input {
       @extend .shadow;
     }
   }
