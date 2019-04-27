@@ -19,7 +19,7 @@ RSpec.describe ImagesController, type: :controller do
     end
 
     context 'when filter by param title' do
-      before { get :index, params: { title: images.first.title } }
+      before { get :index, params: { title: images.first.anime.title } }
 
       it { expect(response).to have_http_status(:ok) }
       it 'has filtered images' do
@@ -36,9 +36,7 @@ RSpec.describe ImagesController, type: :controller do
     it { expect(response).to redirect_to(:show_image) }
     it 'clear image data' do
       image.reload
-      expect(image).to have_attributes(title: nil,
-                                       season: nil,
-                                       episode: nil)
+      expect(image).to have_attributes(anime: nil, episode: nil)
     end
   end
 end

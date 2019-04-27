@@ -12,12 +12,8 @@ module Images
       response = site.search(image_data)
       search_result = JSON.parse(response.body)
       logger.ap search_result
-      data = { queried: true }
-      docs = search_result['docs']
-      if docs.present?
-        data.merge!(docs.first.slice('title', 'season', 'episode'))
-      end
-      image.update!(data)
+      doc = search_result['docs'].try(:first)
+      save_doc_to_db(doc) if doc.present?
     rescue HTTParty::ResponseError => error
       response = error.response
       raise unless response.server_error?
@@ -26,6 +22,18 @@ module Images
     end
 
     private
+
+    def save_doc_to_db(doc)
+      anime_data = { title: doc['title'], season: doc['season'] }
+      imag_data = { queried: true, episode: doc['episode'] }
+      ActiveRecord::Base.transaction do
+        anime = Anime.find_or_create_by!(anime_data)
+        imag_data[:anime_id] = anime.id
+        image.update!(imag_data)
+      end
+    rescue ActiveRecord::RecordInvalid
+      image.update!(queried: true)
+    end
 
     def thumb_image(image)
       thumb_path = ImageDb.thumbs_path.join("#{image.basename}.jpg")

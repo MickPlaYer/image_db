@@ -1,5 +1,3 @@
-- # frozen_string_literal: true
-
 .px-2.w-20
   .card.mb-3
     .card-img-top.embed-responsive.embed-responsive-16by9.bg-dark
@@ -7,8 +5,9 @@
         img.image(src=public_thumb_path(image)
                   alt=image.file_name)
       - if image.queried?
-        - if image.title.present?
-          = link_to images_path(title: image.title), class: 'badge badge-info'
-            - image.title
+        - if image.anime_id
+          - anime = image.anime
+          = link_to images_path(title: anime.title), class: 'badge badge-info'
+            - anime.title
         - else
           span.badge.badge-danger ???

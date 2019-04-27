@@ -20,16 +20,17 @@ RSpec.describe ApplicationController do
     end
 
     it 'has titles' do
-      expect(assigns[:titles]).to eq images.map(&:title)
+      expect(assigns[:titles]).to eq images.map(&:anime).map(&:title)
     end
 
     it 'has title' do
-      expect(assigns[:title]).to be_in images.map(&:title)
+      expect(assigns[:title]).to be_in images.map(&:anime).map(&:title)
     end
 
     it 'has images_by_title' do
       images_by_title = assigns[:images_by_title]
-      expect(images_by_title).to all have_attributes title: assigns[:title]
+      animes = images_by_title.map(&:anime)
+      expect(animes).to all have_attributes title: assigns[:title]
     end
   end
 end

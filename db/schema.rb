@@ -10,16 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_28_155845) do
+ActiveRecord::Schema.define(version: 2019_04_27_215737) do
+
+  create_table "animes", force: :cascade do |t|
+    t.string "title", null: false
+    t.string "season", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "images", force: :cascade do |t|
     t.string "file_name", null: false
-    t.string "title"
-    t.string "season"
     t.string "episode"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "queried", default: false, null: false
+    t.integer "anime_id"
+    t.index ["anime_id"], name: "index_images_on_anime_id"
     t.index ["file_name"], name: "index_images_on_file_name"
   end
 

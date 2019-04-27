@@ -21,7 +21,7 @@ class ImagesController < ApplicationController
   end
 
   def clear
-    @image.update!(title: nil, season: nil, episode: nil)
+    @image.update!(anime_id: nil, episode: nil)
     redirect_to :show_image
   end
 
@@ -32,8 +32,10 @@ class ImagesController < ApplicationController
   end
 
   def filter_images
-    conditions = params.permit(:title)
-    @images = Image.where(conditions)
+    @images = Image.includes(:anime)
+    if params[:title].present?
+      @images = @images.where(animes: { title: params[:title] })
+    end
     @images = @images.search(params[:search]) if params[:search].present?
   end
 
