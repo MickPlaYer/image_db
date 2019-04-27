@@ -10,7 +10,7 @@ h2 Images
           'aria-disabled' => 'true'
   | Show All
 hr
-h2 Title: #{@title}
+h2 = @title
 .images.px-2
   .row
     = render partial: 'images/image', collection: @images_by_title
@@ -28,7 +28,11 @@ h2 Titles
 hr
 h2 Jobs
 .buttons-controls
-  = link_to t('.sidekiq'), sidekiq_path, class: 'btn btn-danger', target: '_blank'
+  = link_to t('.sidekiq'),
+            sidekiq_path,
+            class: 'btn btn-danger',
+            target: '_blank',
+            rel: 'noopener'
   = create_job_button('query_all')
   = create_job_button('prepare')
   = create_job_button('thumb')
