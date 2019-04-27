@@ -30,3 +30,4 @@
 /public/thumbs
 !/public/thumbs/.keep
 !/tmp/thumbs/.keep
+/coverage
