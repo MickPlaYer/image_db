@@ -3,7 +3,8 @@
 class WhatAnime
   include HTTParty
   base_uri 'https://trace.moe/api'
-  raise_on Range.new(400, 599).to_a.freeze
+  codes = Range.new(400, 599).freeze
+  raise_on codes
 
   def me
     self.class.get('/me')

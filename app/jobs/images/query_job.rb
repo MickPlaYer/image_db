@@ -18,6 +18,11 @@ module Images
         data.merge!(docs.first.slice('title', 'season', 'episode'))
       end
       image.update!(data)
+    rescue HTTParty::ResponseError => error
+      response = error.response
+      raise unless response.server_error?
+
+      logger.info "Got Server Error(#{response.body}), skip it just now."
     end
 
     private
