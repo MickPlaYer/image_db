@@ -9,7 +9,9 @@ class ImagesController < ApplicationController
     @images = @images.order(:id).page(params[:page]).per(200)
   end
 
-  def show; end
+  def show
+    @anime = @image.anime
+  end
 
   def search
     if @images.count == 1

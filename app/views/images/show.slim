@@ -1,5 +1,3 @@
-- # frozen_string_literal: true
-
 h2 = t('.title')
 
 .row
@@ -12,10 +10,10 @@ h2 = t('.title')
     .mb-3 = @image.file_name
     .mb-3
       - if @image.queried?
-        = @image.season
-        = link_to images_path(title: @image.title),
+        = @anime.season
+        = link_to images_path(title: @anime.title),
                   class: 'badge badge-info mx-1'
-          - @image.title
+          - @anime.title
         = @image.episode
     .input-group.mb-3
       .input-group-prepend
