@@ -33,6 +33,11 @@ h2 Jobs
             class: 'btn btn-danger',
             target: '_blank',
             rel: 'noopener'
+  = link_to t('.quota'),
+            "#{WhatAnime.base_uri}/me",
+            class: 'btn btn-danger',
+            target: '_blank',
+            rel: 'noopener'
   = create_job_button('query_all')
   = create_job_button('prepare')
   = create_job_button('thumb')

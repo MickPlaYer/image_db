@@ -16,7 +16,7 @@ module Images
       save_doc_to_db(doc) if doc.present?
     rescue HTTParty::ResponseError => error
       response = error.response
-      raise unless response.server_error?
+      raise unless response.code == 500
 
       logger.info "Got Server Error(#{response.body}), skip it just now."
     end

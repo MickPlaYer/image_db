@@ -2,6 +2,7 @@ en:
   application:
     homepage:
       sidekiq: Sidekiq
+      quota: Quota
       query_all: Query All
       prepare: Prepare
       thumb: Thumb
