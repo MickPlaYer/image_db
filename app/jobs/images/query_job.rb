@@ -13,7 +13,7 @@ module Images
       search_result = JSON.parse(response.body)
       logger.ap search_result
       doc = search_result['docs'].try(:first)
-      save_doc_to_db(doc) if doc.present?
+      save_doc_to_db(image, doc) if doc.present?
     rescue HTTParty::ResponseError => error
       response = error.response
       raise unless response.code == 500
@@ -23,7 +23,7 @@ module Images
 
     private
 
-    def save_doc_to_db(doc)
+    def save_doc_to_db(image, doc)
       anime_data = { title: doc['title'], season: doc['season'] }
       imag_data = { queried: true, episode: doc['episode'] }
       ActiveRecord::Base.transaction do
