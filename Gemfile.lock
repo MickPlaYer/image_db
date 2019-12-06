@@ -102,6 +102,7 @@ GEM
     factory_bot_rails (4.11.1)
       factory_bot (~> 4.11.1)
       railties (>= 3.0.0)
+    ffi (1.9.25)
     ffi (1.9.25-x64-mingw32)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
@@ -143,10 +144,13 @@ GEM
     mini_mime (1.0.1)
     mini_portile2 (2.4.0)
     minitest (5.11.3)
+    msgpack (1.2.4)
     msgpack (1.2.4-x64-mingw32)
     multi_json (1.13.1)
     multi_xml (0.6.0)
     nio4r (2.3.1)
+    nokogiri (1.9.1)
+      mini_portile2 (~> 2.4.0)
     nokogiri (1.9.1-x64-mingw32)
       mini_portile2 (~> 2.4.0)
     parallel (1.12.1)
@@ -158,7 +162,7 @@ GEM
       method_source (~> 0.9.0)
     pry-rails (0.3.9)
       pry (>= 0.10.4)
-    puma (3.12.0)
+    puma (3.12.2)
     rack (2.0.6)
     rack-protection (2.0.5)
       rack
@@ -279,6 +283,7 @@ GEM
     websocket-extensions (0.1.3)
 
 PLATFORMS
+  ruby
   x64-mingw32
 
 DEPENDENCIES
@@ -294,7 +299,7 @@ DEPENDENCIES
   kaminari
   mini_magick
   pry-rails
-  puma (~> 3.11)
+  puma (~> 3.12)
   rails!
   rails-controller-testing
   rails_best_practices
