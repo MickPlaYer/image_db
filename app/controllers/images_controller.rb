@@ -6,7 +6,7 @@ class ImagesController < ApplicationController
   before_action :must_be_queried, only: %i[clear]
 
   def index
-    @images = @images.order(:id).page(params[:page]).per(200)
+    @images = @images.order(:id).reverse_order.page(params[:page]).per(200)
   end
 
   def show
