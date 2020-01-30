@@ -1,4 +1,12 @@
 .images {
+  .image-wrap {
+    width: 100%;
+    @extend .px-2;
+    @include media-breakpoint-up(sm) { width: 50%; }
+    @include media-breakpoint-up(md) { width: 33.33333333%; }
+    @include media-breakpoint-up(lg) { width: 25%; }
+    @include media-breakpoint-up(xl) { width: 20%; }
+  }
   a {
     img.image {
       position: absolute;
@@ -31,6 +39,8 @@
       right: $spacer * .25;
       border-radius: 0;
       @extend .rounded-top;
+      max-width: calc(100% - #{$spacer} * .5);
+      overflow: hidden;
     }
   }
 }
