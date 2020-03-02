@@ -6,9 +6,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.5.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', github: 'rails/rails'
+gem 'rails', github: 'rails/rails', branch: '6-0-stable'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3', '1.3.13.20180326210955', platforms: :x64_mingw
+gem 'sqlite3', '1.4.0.20190219', platforms: :x64_mingw
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -50,10 +50,10 @@ gem 'slim-rails'
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'rails_best_practices'
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 4.0.0.beta4'
   gem 'rubocop'
-  gem 'rubocop-rspec'
   gem 'rubocop-performance'
+  gem 'rubocop-rspec'
 end
 
 group :development do

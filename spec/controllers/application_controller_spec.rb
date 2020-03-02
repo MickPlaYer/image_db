@@ -16,7 +16,7 @@ RSpec.describe ApplicationController do
     it { expect(response).to have_http_status(:ok) }
 
     it 'has images' do
-      expect(assigns[:images]).to eq images
+      expect(assigns[:images]).to eq images.reverse
     end
 
     it 'has titles' do

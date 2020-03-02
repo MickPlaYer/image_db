@@ -14,8 +14,9 @@ RSpec.describe ImagesController, type: :controller do
     before { get :index }
 
     it { expect(response).to have_http_status(:ok) }
+
     it 'has images' do
-      expect(assigns[:images]).to eq images
+      expect(assigns[:images]).to eq images.reverse
     end
 
     context 'when filter by param title' do
