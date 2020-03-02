@@ -8,7 +8,11 @@ ruby '2.5.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', github: 'rails/rails', branch: '6-0-stable'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3', '1.4.0.20190219', platforms: :x64_mingw
+if RUBY_PLATFORM =~ /win32|mingw32/
+  gem 'sqlite3', '1.4.0.20190219', platforms: :x64_mingw
+else
+  gem 'sqlite3', '~> 1.4.0'
+end
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
